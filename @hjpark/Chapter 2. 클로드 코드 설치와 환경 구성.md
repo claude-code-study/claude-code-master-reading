@@ -1,5 +1,5 @@
 ---
-slug: /hjpark/Chapter2
+slug: /@hjpark/Chapter2
 ---
 
 # Chapter 2. 클로드 코드 설치와 환경 구성

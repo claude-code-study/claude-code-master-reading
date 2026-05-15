@@ -1,5 +1,6 @@
 # Docusaurus build output
 .docusaurus
+.vscode
 build
 
 # Dependencies

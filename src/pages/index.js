@@ -7,12 +7,12 @@ const members = [
   {
     name: 'sukyoungshin',
     avatar: 'https://github.com/sukyoungshin.png',
-    docsPath: '/claude-code-master-reading/docs/sukyoung/Chapter1',
+    docsPath: '/claude-code-master-reading/docs/@sukyoung/Chapter1',
   },
   {
     name: 'mariaanepark',
     avatar: 'https://github.com/mariaanepark.png',
-    docsPath: '/claude-code-master-reading/docs/hjpark/Chapter2',
+    docsPath: '/claude-code-master-reading/docs/@hjpark/Chapter2',
   },
 ];
 
