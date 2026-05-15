@@ -24,6 +24,19 @@
 📁 hjpark/    — hjpark의 챕터별 학습 노트
 ```
 
+## 로컬 실행 (Docusaurus)
+
+```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 실행 (http://localhost:3000)
+npm start
+
+# 빌드
+npm run build
+```
+
 ## 참고 자료
 
 - 클로드코드 공식 문서: https://docs.anthropic.com/ko/docs/claude-code/overview
