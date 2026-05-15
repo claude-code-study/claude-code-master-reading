@@ -1,3 +1,7 @@
+---
+slug: /hjpark/Chapter2
+---
+
 # Chapter 2. 클로드 코드 설치와 환경 구성
 
 Comments : https://code.claude.com/docs/ko/overview#native-install-recommended 참조하는 게 가장 좋은 듯?
