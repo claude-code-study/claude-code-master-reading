@@ -4,11 +4,13 @@
 
 ## 스터디 구성원
 
+<!-- MEMBERS_TABLE_START -->
 | 사진 | 멤버 |
 |--|--|
 | <img src="https://github.com/sukyoungshin.png" width="30" /> | [@sukyoungshin](https://github.com/sukyoungshin) |
 | <img src="https://github.com/mariaanepark.png" width="30" /> | [@mariaanepark](https://github.com/mariaanepark) |
 | <img src="https://github.com/yskwak92.png" width="30" /> | [@yskwak92](https://github.com/yskwak92) |
+<!-- MEMBERS_TABLE_END -->
 
 ## 스터디 일정
 
@@ -20,11 +22,13 @@
 
 ## 레포 구조
 
+<!-- MEMBERS_DIRS_START -->
 ```
-📁 sukyoung/   — sukyoung의 챕터별 학습 노트
-📁 hjpark/     — hjpark의 챕터별 학습 노트
-📁 yskwak92/   — yskwak92의 챕터별 학습 노트
+📁 @sukyoung/   — sukyoungshin의 챕터별 학습 노트
+📁 @hjpark/   — mariaanepark의 챕터별 학습 노트
+📁 @yskwak92/   — yskwak92의 챕터별 학습 노트
 ```
+<!-- MEMBERS_DIRS_END -->
 
 ## 로컬 실행 (Docusaurus)
 

@@ -1,25 +1,14 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import memberConfig from '../../members.config';
 import styles from './index.module.css';
 
-const members = [
-  {
-    name: 'sukyoungshin',
-    avatar: 'https://github.com/sukyoungshin.png',
-    docsPath: '/claude-code-master-reading/docs/@sukyoung/Chapter1',
-  },
-  {
-    name: 'mariaanepark',
-    avatar: 'https://github.com/mariaanepark.png',
-    docsPath: '/claude-code-master-reading/docs/@hjpark/Chapter2',
-  },
-  {
-    name: 'yskwak92',
-    avatar: 'https://github.com/yskwak92.png',
-    docsPath: '/claude-code-master-reading/docs/@yskwak92/Chapter3',
-  },
-];
+const members = memberConfig.map((m) => ({
+  name: m.githubId,
+  avatar: `https://github.com/${m.githubId}.png`,
+  docsPath: `/claude-code-master-reading/docs/${m.dir}/${m.firstDoc}`,
+}));
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();

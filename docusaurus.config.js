@@ -1,5 +1,6 @@
 // @ts-check
 const { themes: prismThemes } = require('prism-react-renderer');
+const members = require('./members.config');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -34,7 +35,7 @@ const config = {
       ({
         docs: {
           path: '.',
-          include: ['@sukyoung/**/*.md', '@hjpark/**/*.md', '@yskwak92/**/*.md'],
+          include: members.map((m) => `${m.dir}/**/*.md`),
           sidebarPath: './sidebars.js',
           routeBasePath: 'docs',
         },
