@@ -8,6 +8,7 @@
 |--|--|
 | <img src="https://github.com/sukyoungshin.png" width="30" /> | [@sukyoungshin](https://github.com/sukyoungshin) |
 | <img src="https://github.com/mariaanepark.png" width="30" /> | [@mariaanepark](https://github.com/mariaanepark) |
+| <img src="https://github.com/yskwak92.png" width="30" /> | [@yskwak92](https://github.com/yskwak92) |
 
 ## 스터디 일정
 
@@ -20,8 +21,9 @@
 ## 레포 구조
 
 ```
-📁 sukyoung/  — sukyoung의 챕터별 학습 노트
-📁 hjpark/    — hjpark의 챕터별 학습 노트
+📁 sukyoung/   — sukyoung의 챕터별 학습 노트
+📁 hjpark/     — hjpark의 챕터별 학습 노트
+📁 yskwak92/   — yskwak92의 챕터별 학습 노트
 ```
 
 ## 로컬 실행 (Docusaurus)

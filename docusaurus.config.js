@@ -34,7 +34,7 @@ const config = {
       ({
         docs: {
           path: '.',
-          include: ['@sukyoung/**/*.md', '@hjpark/**/*.md'],
+          include: ['@sukyoung/**/*.md', '@hjpark/**/*.md', '@yskwak92/**/*.md'],
           sidebarPath: './sidebars.js',
           routeBasePath: 'docs',
         },

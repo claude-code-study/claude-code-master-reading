@@ -14,6 +14,11 @@ const members = [
     avatar: 'https://github.com/mariaanepark.png',
     docsPath: '/claude-code-master-reading/docs/@hjpark/Chapter2',
   },
+  {
+    name: 'yskwak92',
+    avatar: 'https://github.com/yskwak92.png',
+    docsPath: '/claude-code-master-reading/docs/@yskwak92/Chapter3',
+  },
 ];
 
 export default function Home() {
