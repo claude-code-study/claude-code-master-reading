@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import memberConfig from '../../members.config';
+import scheduleConfig from '../../schedule.config';
 import styles from './index.module.css';
 
 const members = memberConfig.map((m) => ({
@@ -53,24 +54,14 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>2026.05.13</td>
-                <td>1부. Chapter 1</td>
-                <td>AI 시대의 개발자 패러다임</td>
-                <td>✅</td>
-              </tr>
-              <tr>
-                <td>2026.05.13</td>
-                <td>1부. Chapter 2</td>
-                <td>클로드 코드 설치와 환경 구성</td>
-                <td>✅</td>
-              </tr>
-              <tr>
-                <td>2026.05.20</td>
-                <td>1부. Chapter 3</td>
-                <td>AI와 함께하는 개발 방법론</td>
-                <td></td>
-              </tr>
+              {scheduleConfig.map((s, i) => (
+                <tr key={i}>
+                  <td>{s.date}</td>
+                  <td>{s.part}</td>
+                  <td>{s.title}</td>
+                  <td>{s.done ? '✅' : ''}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const members = require('../members.config');
+const schedule = require('../schedule.config');
 const readmePath = path.join(__dirname, '..', 'README.md');
 
 let readme = fs.readFileSync(readmePath, 'utf8');
@@ -26,6 +27,17 @@ const dirsContent = `\`\`\`\n${dirLines}\n\`\`\``;
 readme = readme.replace(
   /<!-- MEMBERS_DIRS_START -->[\s\S]*?<!-- MEMBERS_DIRS_END -->/,
   `<!-- MEMBERS_DIRS_START -->\n${dirsContent}\n<!-- MEMBERS_DIRS_END -->`
+);
+
+// 스터디 일정 테이블 업데이트
+const scheduleRows = schedule
+  .map(s => `| ${s.date} | ${s.part} | ${s.title} | ${s.done ? '✅' : ''} |`)
+  .join('\n');
+const scheduleContent = `| 일정 | 챕터 | 제목 | 진행 |\n|--|--|--| -- |\n${scheduleRows}`;
+
+readme = readme.replace(
+  /<!-- SCHEDULE_TABLE_START -->[\s\S]*?<!-- SCHEDULE_TABLE_END -->/,
+  `<!-- SCHEDULE_TABLE_START -->\n${scheduleContent}\n<!-- SCHEDULE_TABLE_END -->`
 );
 
 fs.writeFileSync(readmePath, readme);

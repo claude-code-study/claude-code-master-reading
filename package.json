@@ -10,7 +10,8 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
-    "sync-members": "node scripts/sync-readme.js"
+    "sync": "node scripts/sync-readme.js",
+    "//sync": "일정 및 스터디 멤버 업데이트 (schedule.config.js, members.config.js 수정 후 실행)"
   },
   "dependencies": {
     "@docusaurus/core": "^3.0.0",
