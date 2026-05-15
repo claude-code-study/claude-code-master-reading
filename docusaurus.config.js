@@ -8,10 +8,10 @@ const config = {
   favicon: 'img/favicon.ico',
 
   url: 'https://claude-code-study.github.io',
-  baseUrl: '/claude-code-reading/',
+  baseUrl: '/claude-code-master-reading/',
 
   organizationName: 'claude-code-study',
-  projectName: 'claude-code-reading',
+  projectName: 'claude-code-master-reading',
 
   onBrokenLinks: 'warn',
 
@@ -55,7 +55,7 @@ const config = {
             to: '/',
             position: 'left',
             label: '스터디 소개',
-            activeBaseRegex: '^/claude-code-reading/$',
+            activeBaseRegex: '^/claude-code-master-reading/$',
           },
           {
             type: 'docSidebar',
@@ -64,7 +64,7 @@ const config = {
             label: '스터디 노트',
           },
           {
-            href: 'https://github.com/claude-code-study/claude-code-reading',
+            href: 'https://github.com/claude-code-study/claude-code-master-reading',
             label: 'GitHub',
             position: 'right',
           },
