@@ -94,7 +94,7 @@ describe("POST /api/tickets", () => {
     expect(parsed).toEqual({ body: { ok: true }, status: 201 });
   });
 
-  it("creates a ticket with required fields only", async () => {
+  it("TC-API-001-1 creates a ticket with required fields only", async () => {
     const route = await loadTicketsRoute();
     const response = await route.POST(createJsonRequest(validTicketInput()));
     const { body, status } = await readJsonResponse(response);
@@ -117,7 +117,7 @@ describe("POST /api/tickets", () => {
     expect(body).not.toHaveProperty("isOverdue");
   });
 
-  it("creates a ticket with full details", async () => {
+  it("TC-API-001-2 creates a ticket with full details", async () => {
     const route = await loadTicketsRoute();
     const response = await route.POST(
       createJsonRequest(
@@ -145,39 +145,90 @@ describe("POST /api/tickets", () => {
   });
 
   it.each([
-    [{}, "제목을 입력해주세요"],
-    [{ title: "" }, "제목을 입력해주세요"],
-    [{ title: "   " }, "제목을 입력해주세요"],
-    [{ title: "a".repeat(201) }, "제목은 200자 이내로 입력해주세요"],
-  ])("rejects invalid title input %#", async (input, message) => {
-    const route = await loadTicketsRoute();
-    const response = await route.POST(createJsonRequest(input));
-    const { body, status } = await readJsonResponse(response);
+    {
+      caseId: "001-3",
+      input: {},
+      message: "제목을 입력해주세요",
+    },
+    {
+      caseId: "001-4",
+      input: { title: "" },
+      message: "제목을 입력해주세요",
+    },
+    {
+      caseId: "001-5",
+      input: { title: "   " },
+      message: "제목을 입력해주세요",
+    },
+    {
+      caseId: "001-6",
+      input: { title: "a".repeat(201) },
+      message: "제목은 200자 이내로 입력해주세요",
+    },
+  ])(
+    "TC-API-$caseId rejects invalid title input",
+    async ({ input, message }) => {
+      const route = await loadTicketsRoute();
+      const response = await route.POST(createJsonRequest(input));
+      const { body, status } = await readJsonResponse(response);
 
-    expect(status).toBe(400);
-    expect(body).toEqual(expectedValidationError(message));
-  });
+      expect(status).toBe(400);
+      expect(body).toEqual(expectedValidationError(message));
+    },
+  );
 
   it.each([
-    [
-      { description: "a".repeat(1001), title: "테스트 할일" },
-      "설명은 1000자 이내로 입력해주세요",
-    ],
-    [
-      { priority: "URGENT", title: "테스트 할일" },
-      "우선순위는 LOW, MEDIUM, HIGH 중 선택해주세요",
-    ],
-    [
-      { dueDate: "2020-01-01", title: "테스트 할일" },
-      "종료예정일은 오늘 이후 날짜를 선택해주세요",
-    ],
-  ])("rejects invalid optional input %#", async (input, message) => {
+    {
+      caseId: "001-7",
+      input: { description: "a".repeat(1001), title: "ok" },
+      message: "설명은 1000자 이내로 입력해주세요",
+    },
+    {
+      caseId: "001-8",
+      input: { priority: "URGENT", title: "ok" },
+      message: "우선순위는 LOW, MEDIUM, HIGH 중 선택해주세요",
+    },
+    {
+      caseId: "001-9",
+      input: { dueDate: "2020-01-01", title: "ok" },
+      message: "종료예정일은 오늘 이후 날짜를 선택해주세요",
+    },
+  ])(
+    "TC-API-$caseId rejects invalid optional input",
+    async ({ input, message }) => {
+      const route = await loadTicketsRoute();
+      const response = await route.POST(createJsonRequest(input));
+      const { body, status } = await readJsonResponse(response);
+
+      expect(status).toBe(400);
+      expect(body).toEqual(expectedValidationError(message));
+    },
+  );
+
+  it("TC-API-001-10 assigns a smaller position to the later ticket", async () => {
     const route = await loadTicketsRoute();
-    const response = await route.POST(createJsonRequest(input));
+    const firstResponse = await route.POST(
+      createJsonRequest(validTicketInput({ title: "첫 번째 티켓" })),
+    );
+    const secondResponse = await route.POST(
+      createJsonRequest(validTicketInput({ title: "두 번째 티켓" })),
+    );
+    const first = await readJsonResponse(firstResponse);
+    const second = await readJsonResponse(secondResponse);
+
+    expect(first.status).toBe(201);
+    expect(second.status).toBe(201);
+    expect(second.body.position).toBeLessThan(first.body.position);
+  });
+
+  it("TC-API-001-11 initializes startedAt and completedAt as null", async () => {
+    const route = await loadTicketsRoute();
+    const response = await route.POST(createJsonRequest(validTicketInput()));
     const { body, status } = await readJsonResponse(response);
 
-    expect(status).toBe(400);
-    expect(body).toEqual(expectedValidationError(message));
+    expect(status).toBe(201);
+    expect(body.startedAt).toBeNull();
+    expect(body.completedAt).toBeNull();
   });
 
   it("does not call the create service when validation fails", async () => {
