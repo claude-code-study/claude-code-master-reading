@@ -52,6 +52,8 @@ Next.js 15 App Router 기반의 풀스택 애플리케이션이며, 프런트엔
 - 에러 응답은 `{ "error": { "code": "...", "message": "..." } }` 형식만 사용한다.
 - 모든 API 요청 body, route parameter, query parameter는 Zod로 검증한다.
 - 비즈니스 로직은 `src/server/services/`에 분리한다.
+- Guardrails 절대 준수: constitution의 금지 DB/Git/npm/파일시스템 명령은 실행하지 않는다.
+- 파괴적 작업은 실행 전 사용자 확인과 백업/복구 방법 안내가 필요하다.
 
 ### TypeScript
 - `strict` 모드를 유지한다.

@@ -52,6 +52,9 @@
   parameter validated with Zod before service-layer logic?
 - **Service-Layer Business Logic**: Is business logic placed in
   `src/server/services/`, keeping `src/app/api/` route handlers thin?
+- **Guardrails**: Does the plan avoid prohibited database, Git, package
+  management, and filesystem commands, and require user confirmation for
+  destructive or irreversible operations?
 - **Verdict**: PASS only if every applicable item above is satisfied. Document
   any violation in Complexity Tracking before proceeding.
 

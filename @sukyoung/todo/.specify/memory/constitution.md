@@ -1,21 +1,20 @@
 <!--
 Sync Impact Report
-Version change: template -> 1.0.0
+Version change: 1.0.0 -> 1.1.0
 Modified principles:
-- Template placeholders -> I. TypeScript Strictness
-- Template placeholders -> II. API Specification Fidelity
-- Template placeholders -> III. Standard Error Envelope
-- Template placeholders -> IV. Zod Request Validation
-- Template placeholders -> V. Service-Layer Business Logic
+- I. TypeScript Strictness (unchanged)
+- II. API Specification Fidelity (unchanged)
+- III. Standard Error Envelope (unchanged)
+- IV. Zod Request Validation (unchanged)
+- V. Service-Layer Business Logic (unchanged)
 Added sections:
-- Technical Constraints
-- Development Workflow
+- Guardrails
 Removed sections:
 - None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
-- ✅ .specify/templates/spec-template.md
-- ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/spec-template.md (no change required)
+- ✅ .specify/templates/tasks-template.md (no change required)
 Runtime guidance:
 - ✅ AGENTS.md
 Follow-up TODOs:
@@ -110,6 +109,57 @@ from domain behavior and makes backend logic testable without HTTP plumbing.
   DB changes SHOULD additionally run `npm run drizzle:generate` and
   `npm run drizzle:migrate`.
 
+## Guardrails
+
+AI coding agents MUST NOT perform dangerous operations accidentally. The rules
+in this section are absolute safety requirements and MUST NOT be bypassed under
+any circumstances.
+
+### Database Prohibited Commands
+
+- `DROP TABLE` and `DROP DATABASE` are strictly prohibited.
+- `TRUNCATE` is strictly prohibited.
+- `DELETE FROM` without a `WHERE` clause is strictly prohibited.
+- `ALTER TABLE DROP COLUMN` requires explicit user approval before execution.
+
+### Database Safety Rules
+
+- Deletion and reset operations MUST require user approval before execution.
+- Before deletion, the agent MUST explain a backup or recovery path.
+- When test data exists, the agent SHOULD resolve it with targeted SQL instead
+  of resetting the database.
+- The agent MUST NOT automatically modify a production database.
+
+### Git Prohibited Commands
+
+- `git push --force` is strictly prohibited.
+- `git reset --hard` is strictly prohibited.
+- `git clean -fd` requires explicit user confirmation before execution.
+- `git branch -D main` and `git branch -D master` are strictly prohibited.
+
+### Package Management Prohibited Commands
+
+- `npm audit fix --force` is strictly prohibited.
+- `rm -rf node_modules && npm install` requires explicit user confirmation
+  before execution.
+- Automatic major-version upgrades are strictly prohibited.
+
+### File System Prohibited Commands
+
+- `rm -rf /` or deletion of root paths is strictly prohibited.
+- Modifying files outside the project root is strictly prohibited.
+- Deleting `.env` files requires explicit user confirmation before execution.
+- Deleting the entire `src/` directory is strictly prohibited.
+
+### Safe Work Principles
+
+- Destructive operations, including deletion and initialization, MUST require
+  user confirmation before execution.
+- For irreversible operations, the agent MUST explain a backup method first.
+- Automated scripts MUST NOT execute destructive commands.
+- Suspicious operations MUST be explained to the user and confirmed before
+  execution.
+
 ## Governance
 
 This constitution supersedes conflicting implementation habits, generated
@@ -132,4 +182,4 @@ Versioning policy:
 Compliance review is required during planning and before implementation. Any
 deviation MUST be documented in the feature plan with a reason and mitigation.
 
-**Version**: 1.0.0 | **Ratified**: 2026-06-07 | **Last Amended**: 2026-06-07
+**Version**: 1.1.0 | **Ratified**: 2026-06-07 | **Last Amended**: 2026-06-07
