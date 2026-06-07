@@ -43,6 +43,16 @@ export interface ReorderTicketInput {
   position: number;
 }
 
+export interface ReorderedTicketPosition {
+  id: number;
+  position: number;
+}
+
+export interface ReorderTicketResponse {
+  ticket: TicketWithMeta;
+  affected: ReorderedTicketPosition[];
+}
+
 export type BoardData = Record<TicketStatus, TicketWithMeta[]>;
 
 export interface BoardResponse {

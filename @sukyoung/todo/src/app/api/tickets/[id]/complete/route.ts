@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { handleRouteError } from "@/server/middleware/errorHandler";
 import { HttpError } from "@/server/middleware/httpError";
+import { toTicketResponse } from "@/server/serializers/ticket";
 import { ticketService } from "@/server/services/ticketService";
 
 type RouteContext = {
@@ -23,7 +24,7 @@ const getTicketId = async ({ params }: RouteContext) => {
 export const PATCH = async (_request: Request, context: RouteContext) => {
   try {
     const ticket = await ticketService.complete(await getTicketId(context));
-    return NextResponse.json(ticket);
+    return NextResponse.json(toTicketResponse(ticket));
   } catch (error) {
     return handleRouteError(error);
   }

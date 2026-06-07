@@ -6,6 +6,7 @@ const TICKET_VALIDATION_MESSAGES = {
   descriptionTooLong: "설명은 1000자 이내로 입력해주세요",
   dueDatePast: "종료예정일은 오늘 이후 날짜를 선택해주세요",
   invalidPriority: "우선순위는 LOW, MEDIUM, HIGH 중 선택해주세요",
+  invalidReorderStatus: "상태는 BACKLOG, TODO, IN_PROGRESS 중 선택해주세요",
   titleRequired: "제목을 입력해주세요",
   titleTooLong: "제목은 200자 이내로 입력해주세요",
 } as const;
@@ -85,11 +86,14 @@ export const updateTicketSchema = z
 
 export const reorderTicketSchema = z.object({
   ticketId: z.number().int().positive(),
-  status: z.enum([
-    TICKET_STATUS.BACKLOG,
-    TICKET_STATUS.TODO,
-    TICKET_STATUS.IN_PROGRESS,
-  ]),
+  status: z.enum(
+    [TICKET_STATUS.BACKLOG, TICKET_STATUS.TODO, TICKET_STATUS.IN_PROGRESS],
+    {
+      errorMap: () => ({
+        message: TICKET_VALIDATION_MESSAGES.invalidReorderStatus,
+      }),
+    },
+  ),
   position: z.number().int(),
 });
 

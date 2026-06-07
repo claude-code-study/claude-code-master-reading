@@ -3,6 +3,7 @@ import type {
   BoardData,
   BoardResponse,
   CreateTicketInput,
+  ReorderTicketResponse,
   ReorderTicketInput,
   Ticket,
   TicketWithMeta,
@@ -55,9 +56,9 @@ const findTicketIndex = (ticketId: number) => {
   return index;
 };
 
-const getNextBacklogPosition = () => {
+const getNextColumnPosition = (status: Ticket["status"]) => {
   const positions = tickets
-    .filter((ticket) => ticket.status === TICKET_STATUS.BACKLOG)
+    .filter((ticket) => ticket.status === status)
     .map((ticket) => ticket.position);
 
   return positions.length === 0 ? 1 : Math.min(...positions) - 1024;
@@ -93,7 +94,7 @@ export const ticketService = {
       description: input.description ?? null,
       status: TICKET_STATUS.BACKLOG,
       priority: input.priority ?? "MEDIUM",
-      position: getNextBacklogPosition(),
+      position: getNextColumnPosition(TICKET_STATUS.BACKLOG),
       plannedStartDate: input.plannedStartDate ?? null,
       dueDate: input.dueDate ?? null,
       startedAt: null,
@@ -141,6 +142,7 @@ export const ticketService = {
     const updatedTicket: Ticket = {
       ...tickets[index],
       status: TICKET_STATUS.DONE,
+      position: getNextColumnPosition(TICKET_STATUS.DONE),
       completedAt: timestamp,
       updatedAt: timestamp,
     };
@@ -149,7 +151,7 @@ export const ticketService = {
     return withMeta(updatedTicket);
   },
 
-  reorder: async (input: ReorderTicketInput): Promise<TicketWithMeta> => {
+  reorder: async (input: ReorderTicketInput): Promise<ReorderTicketResponse> => {
     const index = findTicketIndex(input.ticketId);
     const ticket = tickets[index];
     const timestamp = nowIso();
@@ -174,6 +176,9 @@ export const ticketService = {
     };
 
     tickets[index] = updatedTicket;
-    return withMeta(updatedTicket);
+    return {
+      ticket: withMeta(updatedTicket),
+      affected: [],
+    };
   },
 };
