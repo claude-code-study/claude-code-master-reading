@@ -118,6 +118,13 @@ Next.js 15 App Router 기반의 풀스택 애플리케이션이며, 프런트엔
 - 관련 없는 리팩터링이나 포맷 변경을 섞지 않는다.
 - 프런트엔드와 백엔드 경계를 이유 없이 넘나들지 않는다.
 
+## 최근 변경사항 요약
+최근 14일 내 `/changelog` skill로 기록된 변경사항이다.
+
+<!-- CHANGELOG_RECENT_START -->
+- 2026-06-07 21:06 [docs/w4] $changelog 지금 수정 내역을 반영한 뒤 커밋 메시지를 만들어서 푸시하고 기록해줘. changelog를 통해 Update 문서나 코드들 리스트업해서 알려줘. 제대로 반영이 되는 건지 확인해보고 싶어.
+- 2026-06-07 21:03 [docs/w4] 매번 프롬프트 입력 후 코드를 수정하고 git에 반영할 때 프롬프트, 변경 파일, 날짜/브랜치, 테스트 결과를 기록하는 /changelog Skill 시스템 구현
+<!-- CHANGELOG_RECENT_END -->
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan:

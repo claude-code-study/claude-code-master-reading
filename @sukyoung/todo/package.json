@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "prettier --write .",
+    "changelog": "node .agents/skills/changelog/scripts/record-changelog.mjs",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx src/server/db/seed.ts",
