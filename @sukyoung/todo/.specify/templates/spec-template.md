@@ -78,6 +78,16 @@
 - What happens when [boundary condition]?
 - How does system handle [error scenario]?
 
+### API Contract Requirements *(include if feature touches API)*
+
+- Endpoint behavior MUST match `docs/API_SPEC.md` exactly for route, method,
+  status code, request shape, response shape, and field names.
+- Error responses MUST use `{ "error": { "code": "...", "message": "..." } }`.
+- Request body, route parameter, and query parameter validation MUST be covered
+  by Zod schemas before business logic runs.
+- Business behavior exposed by the API MUST be implemented in
+  `src/server/services/`, not directly inside route handlers.
+
 ## Requirements *(mandatory)*
 
 <!--

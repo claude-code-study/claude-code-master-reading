@@ -33,6 +33,7 @@ Next.js 15 App Router 기반의 풀스택 애플리케이션이며, 프런트엔
 ## 명세 문서 경로
 구현 전 관련 명세를 반드시 확인한다.
 
+- 프로젝트 constitution: `.specify/memory/constitution.md`
 - 제품 요구사항: `docs/PRD.md`
 - 기술 요구사항: `docs/TRD.md`
 - 상세 요구사항: `docs/REQUIREMENTS.md`
@@ -44,6 +45,14 @@ Next.js 15 App Router 기반의 풀스택 애플리케이션이며, 프런트엔
 - SDD 산출물: `specs/<feature>/spec.md`, `specs/<feature>/plan.md`, `specs/<feature>/tasks.md`
 
 ## 코딩 컨벤션
+### Constitution 준수
+- `.specify/memory/constitution.md`는 구현 규칙의 최상위 기준이다.
+- TypeScript strict 모드는 필수다.
+- API 응답은 `docs/API_SPEC.md`의 형식을 정확히 따른다.
+- 에러 응답은 `{ "error": { "code": "...", "message": "..." } }` 형식만 사용한다.
+- 모든 API 요청 body, route parameter, query parameter는 Zod로 검증한다.
+- 비즈니스 로직은 `src/server/services/`에 분리한다.
+
 ### TypeScript
 - `strict` 모드를 유지한다.
 - `@/*` 경로 별칭은 `src/*`를 가리킨다.

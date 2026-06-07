@@ -40,7 +40,20 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- **TypeScript Strictness**: Does the plan preserve `strict: true` and avoid
+  broad `any`, unsafe casts, and unchecked nullable access?
+- **API Specification Fidelity**: For API work, does the plan follow
+  `docs/API_SPEC.md` exactly for routes, methods, status codes, request shapes,
+  response shapes, and field names?
+- **Standard Error Envelope**: For API errors, does the plan return
+  `{ "error": { "code": "...", "message": "..." } }` and no alternate error
+  shape?
+- **Zod Request Validation**: Are every request body, route parameter, and query
+  parameter validated with Zod before service-layer logic?
+- **Service-Layer Business Logic**: Is business logic placed in
+  `src/server/services/`, keeping `src/app/api/` route handlers thin?
+- **Verdict**: PASS only if every applicable item above is satisfied. Document
+  any violation in Complexity Tracking before proceeding.
 
 ## Project Structure
 
