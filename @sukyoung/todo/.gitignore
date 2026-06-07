@@ -39,5 +39,7 @@ tsconfig.tsbuildinfo
 .agents/skills/*
 !.agents/skills/changelog/
 !.agents/skills/changelog/**
+!.agents/skills/pr/
+!.agents/skills/pr/**
 
 # Spec Kit project files under .specify/ are intentionally versioned.
