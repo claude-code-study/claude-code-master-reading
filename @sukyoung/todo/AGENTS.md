@@ -120,6 +120,6 @@ Next.js 15 App Router 기반의 풀스택 애플리케이션이며, 프런트엔
 
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan.
-If a feature-specific SDD plan exists, prefer `specs/<feature>/plan.md`.
+shell commands, and other important information, read the current plan:
+`specs/001-create-ticket-api/plan.md`.
 <!-- SPECKIT END -->
