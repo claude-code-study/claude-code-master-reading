@@ -18,9 +18,9 @@
 
 **Purpose**: Prepare focused test files before endpoint implementation changes.
 
-- [ ] T001 Create API route test harness for POST requests in `__tests__/api/tickets.test.ts`
-- [ ] T002 [P] Create validation schema test harness in `__tests__/validations/ticket.test.ts`
-- [ ] T003 [P] Add isolated create-test setup notes or helpers in `__tests__/services/ticketService.test.ts`
+- [X] T001 Create API route test harness for POST requests in `__tests__/api/tickets.test.ts`
+- [X] T002 [P] Create validation schema test harness in `__tests__/validations/ticket.test.ts`
+- [X] T003 [P] Add isolated create-test setup notes or helpers in `__tests__/services/ticketService.test.ts`
 
 ---
 
@@ -30,9 +30,9 @@
 
 **Critical**: No implementation work should begin until these contract references are reflected in tests.
 
-- [ ] T004 Add shared expected error envelope helper in `__tests__/api/tickets.test.ts`
-- [ ] T005 Add shared valid ticket input factory in `__tests__/api/tickets.test.ts`
-- [ ] T006 [P] Add validation message constants for ticket creation tests in `__tests__/validations/ticket.test.ts`
+- [X] T004 Add shared expected error envelope helper in `__tests__/api/tickets.test.ts`
+- [X] T005 Add shared valid ticket input factory in `__tests__/api/tickets.test.ts`
+- [X] T006 [P] Add validation message constants for ticket creation tests in `__tests__/validations/ticket.test.ts`
 
 **Checkpoint**: Test scaffolding is ready and implementation can proceed story by story.
 
@@ -46,15 +46,15 @@
 
 ### Tests for User Story 1
 
-- [ ] T007 [P] [US1] Add API contract test for minimal ticket creation in `__tests__/api/tickets.test.ts`
-- [ ] T008 [P] [US1] Add Zod test for minimal valid create input and default priority in `__tests__/validations/ticket.test.ts`
-- [ ] T009 [P] [US1] Add service test for Backlog status, Medium priority, null startedAt, and null completedAt in `__tests__/services/ticketService.test.ts`
+- [X] T007 [P] [US1] Add API contract test for minimal ticket creation in `__tests__/api/tickets.test.ts`
+- [X] T008 [P] [US1] Add Zod test for minimal valid create input and default priority in `__tests__/validations/ticket.test.ts`
+- [X] T009 [P] [US1] Add service test for Backlog status, Medium priority, null startedAt, and null completedAt in `__tests__/services/ticketService.test.ts`
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] Align create ticket optional defaults and inferred input type in `src/shared/validations/ticket.ts`
-- [ ] T011 [US1] Ensure `ticketService.create` applies Backlog status, Medium priority, null system dates, and timestamps in `src/server/services/ticketService.ts`
-- [ ] T012 [US1] Ensure POST handler returns `201 Created` with the created ticket in `src/app/api/tickets/route.ts`
+- [X] T010 [US1] Align create ticket optional defaults and inferred input type in `src/shared/validations/ticket.ts`
+- [X] T011 [US1] Ensure `ticketService.create` applies Backlog status, Medium priority, null system dates, and timestamps in `src/server/services/ticketService.ts`
+- [X] T012 [US1] Ensure POST handler returns `201 Created` with the created ticket in `src/app/api/tickets/route.ts`
 
 **Checkpoint**: Minimal valid ticket creation passes independently.
 
@@ -68,15 +68,15 @@
 
 ### Tests for User Story 2
 
-- [ ] T013 [P] [US2] Add API contract test for full-detail ticket creation in `__tests__/api/tickets.test.ts`
-- [ ] T014 [P] [US2] Add Zod tests for valid priority, plannedStartDate, dueDate, and description length in `__tests__/validations/ticket.test.ts`
-- [ ] T015 [P] [US2] Add service test for Backlog top position assignment across consecutive creates in `__tests__/services/ticketService.test.ts`
+- [X] T013 [P] [US2] Add API contract test for full-detail ticket creation in `__tests__/api/tickets.test.ts`
+- [X] T014 [P] [US2] Add Zod tests for valid priority, plannedStartDate, dueDate, and description length in `__tests__/validations/ticket.test.ts`
+- [X] T015 [P] [US2] Add service test for Backlog top position assignment across consecutive creates in `__tests__/services/ticketService.test.ts`
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Ensure date string validation accepts documented `YYYY-MM-DD` values in `src/shared/validations/ticket.ts`
-- [ ] T017 [US2] Ensure `ticketService.create` preserves description, priority, plannedStartDate, and dueDate in `src/server/services/ticketService.ts`
-- [ ] T018 [US2] Ensure `ticketService.create` assigns new Backlog tickets above existing Backlog tickets in `src/server/services/ticketService.ts`
+- [X] T016 [US2] Ensure date string validation accepts documented `YYYY-MM-DD` values in `src/shared/validations/ticket.ts`
+- [X] T017 [US2] Ensure `ticketService.create` preserves description, priority, plannedStartDate, and dueDate in `src/server/services/ticketService.ts`
+- [X] T018 [US2] Ensure `ticketService.create` assigns new Backlog tickets above existing Backlog tickets in `src/server/services/ticketService.ts`
 
 **Checkpoint**: Full-detail valid ticket creation passes independently.
 
@@ -90,17 +90,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T019 [P] [US3] Add API tests for missing, empty, whitespace-only, and over-200-character titles in `__tests__/api/tickets.test.ts`
-- [ ] T020 [P] [US3] Add API tests for over-1000-character description, invalid priority, and past dueDate in `__tests__/api/tickets.test.ts`
-- [ ] T021 [P] [US3] Add Zod validation tests for title, description, priority, date format, and past dueDate messages in `__tests__/validations/ticket.test.ts`
-- [ ] T022 [P] [US3] Add API test proving validation failure does not call ticket creation service in `__tests__/api/tickets.test.ts`
+- [X] T019 [P] [US3] Add API tests for missing, empty, whitespace-only, and over-200-character titles in `__tests__/api/tickets.test.ts`
+- [X] T020 [P] [US3] Add API tests for over-1000-character description, invalid priority, and past dueDate in `__tests__/api/tickets.test.ts`
+- [X] T021 [P] [US3] Add Zod validation tests for title, description, priority, date format, and past dueDate messages in `__tests__/validations/ticket.test.ts`
+- [X] T022 [P] [US3] Add API test proving validation failure does not call ticket creation service in `__tests__/api/tickets.test.ts`
 
 ### Implementation for User Story 3
 
-- [ ] T023 [US3] Set priority enum validation message to the API spec text in `src/shared/validations/ticket.ts`
-- [ ] T024 [US3] Add Asia/Seoul today-or-later dueDate validation in `src/shared/validations/ticket.ts`
-- [ ] T025 [US3] Ensure Zod validation failures return `{ error: { code, message } }` from `src/server/middleware/errorHandler.ts`
-- [ ] T026 [US3] Ensure POST handler validates before invoking `ticketService.create` in `src/app/api/tickets/route.ts`
+- [X] T023 [US3] Set priority enum validation message to the API spec text in `src/shared/validations/ticket.ts`
+- [X] T024 [US3] Add Asia/Seoul today-or-later dueDate validation in `src/shared/validations/ticket.ts`
+- [X] T025 [US3] Ensure Zod validation failures return `{ error: { code, message } }` from `src/server/middleware/errorHandler.ts`
+- [X] T026 [US3] Ensure POST handler validates before invoking `ticketService.create` in `src/app/api/tickets/route.ts`
 
 **Checkpoint**: All invalid create requests fail with documented errors and no mutation.
 
@@ -110,13 +110,13 @@
 
 **Purpose**: Verify contract fidelity and guard against regressions.
 
-- [ ] T027 Verify `POST /api/tickets` response fields against `specs/001-create-ticket-api/contracts/post-api-tickets.md`
-- [ ] T028 Run focused test suite for ticket creation with `npm test -- --runInBand __tests__/api/tickets.test.ts`
-- [ ] T029 Run validation tests with `npm test -- --runInBand __tests__/validations/ticket.test.ts`
-- [ ] T030 Run service tests with `npm test -- --runInBand __tests__/services/ticketService.test.ts`
-- [ ] T031 Run full Jest suite with `npm test -- --runInBand`
-- [ ] T032 Run TypeScript strict check with `npx tsc --noEmit`
-- [ ] T033 Run lint check with `npm run lint`
+- [X] T027 Verify `POST /api/tickets` response fields against `specs/001-create-ticket-api/contracts/post-api-tickets.md`
+- [X] T028 Run focused test suite for ticket creation with `npm test -- --runInBand __tests__/api/tickets.test.ts`
+- [X] T029 Run validation tests with `npm test -- --runInBand __tests__/validations/ticket.test.ts`
+- [X] T030 Run service tests with `npm test -- --runInBand __tests__/services/ticketService.test.ts`
+- [X] T031 Run full Jest suite with `npm test -- --runInBand`
+- [X] T032 Run TypeScript strict check with `npx tsc --noEmit`
+- [X] T033 Run lint check with `npm run lint`
 
 ---
 
